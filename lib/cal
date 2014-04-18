@@ -6,8 +6,10 @@ months = { 'January' => 31, 'February' => 28, 'March' => 31, 'April' => 30, 'May
 spaces_before = [6, 0, 1, 2, 3, 5, 5]
 spaces_after =  [0, 6, 5, 4, 3, 2, 1]
 
+#puts "Enter a month, and year"
 input_date = STDIN.gets.chomp
 month = ARGV[0]
+#day = ARGV[1]
 year = ARGV[1]
 
 total_days = months[month]
@@ -16,6 +18,11 @@ month = day.month
 start = day.calc
 num_spaces_before = spaces_before[start]
 num_spaces_after = spaces_after[start]
+
+puts start
+puts "#{num_spaces_before}"
+puts "#{num_spaces_after}"
+puts "#{total_days}"
 
 puts
 puts month

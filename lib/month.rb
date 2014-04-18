@@ -5,7 +5,7 @@ class Month
     @month = month
     @day = day.to_i
     @year = year.to_i
-    @days = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
+    #@days = ['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']
     @months = ['January','February','March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   end
 
@@ -19,18 +19,13 @@ class Month
       @month = @idx[0] += 1
     end
   
-    if @month == 13 or 14
+    if @month == 13 or @month == 14
       @year -= 1
-    else
-      @year
     end
 
-    month = (@month * 26) / 10
-    year = @year + @year / 4 
-    year += ( 6 * year / 100) 
-    year += year/400
+    h = (@day + ((@month +1) * 26) / 10) + @year + (@year / 4 ) + 6 * (@year / 100) + (@year/400)
+    h = h % 7
   
-    h = (@day + month + year) % 7
   end
 
 end
