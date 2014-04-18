@@ -13,10 +13,14 @@ class Month
     @spaces_after =  [0, 6, 5, 4, 3, 2, 1]
     @total_days = @month_lengths[@month]
     @start = self.cal
-    @num_spaces_before = @spaces_before[@start]
-    @num_spaces_after = @spaces_after[@start]
+    @num_spaces_before = @spaces_before[@start - 1]
+    @num_spaces_after = @spaces_after[@start - 1]
     @month_array = self.build_month
     @month_int
+  end
+
+  def leap_year?
+    (@year % 4 == 0) and !(@year % 100 == 0) || (@year % 400 == 0)
   end
 
   def prep_zeller_month
@@ -47,6 +51,7 @@ class Month
   end
 
   def build_month
+    @total_days += 1 if self.leap_year? and @month == 'February' 
     month_array = []
     puts "#{month}".center(20)
     puts 'Su Mo Tu We Th Fr Sa'

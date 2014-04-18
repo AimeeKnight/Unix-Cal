@@ -33,6 +33,12 @@ class MonthTest < MiniTest::Unit::TestCase
     #Tuesday 
   end
 
+  def test_02_29_2014
+    month = Month.new('February', 29, 2016)
+    assert_equal 2, month.cal
+    #Monday 
+  end
+
   #def test_invalid_entry
    # asert_raises ArgumentError do
       #Month.cal(022012)
