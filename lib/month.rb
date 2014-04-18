@@ -1,4 +1,5 @@
 class Month
+  include Enumerable
   attr_accessor :month
 
   def initialize (month, day, year)
@@ -13,47 +14,51 @@ class Month
     @start = self.cal
     @num_spaces_before = @spaces_before[@start]
     @num_spaces_after = @spaces_after[@start]
+    @month_array = self.build_month
   end
 
-  def cal
+  def prep_zeller_month
     @idx = @months.each_index.select { |index| @months[index] == @month }
     if @idx[0] < 2
       @month_int = @idx[0] += 13
     else
       @month_int = @idx[0] += 1
     end
-  
-    if @month_int == 13 or @month_int == 14
-      @year -= 1
-    end
+  end
 
+  def prep_zeller_year
+    @year -= 1 if @month_int == 13 or @month_int == 14
+  end
+
+  def cal
+    self.prep_zeller_month
+    self.prep_zeller_year
     h = (@day + ((@month_int +1) * 26) / 10) + @year + (@year / 4 ) + 6 * (@year / 100) + (@year/400)
     @start = h % 7
   end
-  
-  def print_month
-    puts month
+
+  def build_month
+    month_array = []
+    puts "#{month}".center(20)
     puts 'Su Mo Tu We Th Fr Sa'
-    @num_spaces_before.times { print "   " }
-    print " 1 "
-    num = 2
-    @num_spaces_after.times do
-      print " #{num} " 
-      num += 1
+    @num_spaces_before.times do
+      month_array << "   "
     end
 
-    next_line = 7
-    (@total_days - num + 1).times do
-      puts if next_line % 7 == 0
-      if num < 10
-        print " #{num} " 
+    @total_days.times do |i|
+      if i < 9
+        month_array << " #{i + 1} "
       else
-        print "#{num} " 
+        month_array << "#{i + 1} "
       end
-      num += 1
-      next_line += 1
     end
-    puts
+    @month_array = month_array
+  end
+
+  def display
+    @month_array = @month_array.each_slice(7) do |x|
+      puts "#{x.join}"
+    end
   end
 
 end
