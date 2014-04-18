@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require_relative 'month'
-require_relative 'year.rb'
+require_relative 'year'
 
 month = ARGV[0]
 year = ARGV[1]

@@ -1,6 +1,7 @@
 class Month
   include Enumerable
   attr_accessor :month
+  attr_reader :start
 
   def initialize (month, day, year)
     @month = month
@@ -15,6 +16,7 @@ class Month
     @num_spaces_before = @spaces_before[@start]
     @num_spaces_after = @spaces_after[@start]
     @month_array = self.build_month
+    @month_int
   end
 
   def prep_zeller_month
@@ -27,14 +29,21 @@ class Month
   end
 
   def prep_zeller_year
-    @year -= 1 if @month_int == 13 or @month_int == 14
+    if @month_int == 13 or @month_int == 14
+      @year -= 1
+    else
+      @year
+    end
   end
 
   def cal
-    self.prep_zeller_month
     self.prep_zeller_year
+    self.prep_zeller_month
+    puts
+    puts "YEAR #{@year}"
     h = (@day + ((@month_int +1) * 26) / 10) + @year + (@year / 4 ) + 6 * (@year / 100) + (@year/400)
-    @start = h % 7
+    h = h % 7
+    @start = h
   end
 
   def build_month
