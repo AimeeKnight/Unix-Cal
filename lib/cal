@@ -6,5 +6,4 @@ month = ARGV[0]
 year = ARGV[1]
 
 month = Month.new(month, 1, year)
-month.zeller
 month.to_s

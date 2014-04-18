@@ -1,12 +1,20 @@
 require 'month'
 require 'test/unit'
 
-class MonthTest < MiniTest::Unit::TestCase
+#class MonthTest < MiniTest::Unit::TestCase
+class MonthTest < Test::Unit::TestCase
 
   def test_01_01_2014
     month = Month.new('January', 01, 2014)
     assert_equal 4, month.start
     #Wednesday
+  end
+
+  def test_01_01_2014
+    month = Month.new('January', 01, 2014)
+    expected = `cal January 2014`
+    actual = `ruby ./lib/cal January 2014`
+    assert_equal expected, actual
   end
 
   def test_02_28_2014

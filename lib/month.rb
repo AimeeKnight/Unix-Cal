@@ -42,20 +42,22 @@ class Month
   def zeller
     self.prep_zeller_month
     self.prep_zeller_year
-    puts
     h = (@day + ((@month_int +1) * 26) / 10) + @year + (@year / 4 ) + 6 * (@year / 100) + (@year/400)
     h = h % 7
     @start = h
   end
 
   def build_month
-    puts "#{@total_days}"
-    puts "#{self.leap_year?}"
+    newline_counter = 0
+    year = @year
+    year = @year + 1 if @month == 'February' or @month == 'January'
     @total_days += 1 if self.leap_year? and @month == 'February' 
-    puts "#{@total_days}"
     month_array = []
-    puts "#{month}".center(20)
-    puts 'Su Mo Tu We Th Fr Sa'
+    header = "#{month} #{year}".center(20).rstrip
+    days = 'Su Mo Tu We Th Fr Sa'
+
+    puts "#{header}"
+    puts "#{days}"
     @num_spaces_before.times do
       month_array << "   "
     end
@@ -72,8 +74,9 @@ class Month
 
   def to_s
     @month_array = @month_array.each_slice(7) do |x|
-      puts "#{x.join}"
+      puts "#{x.join}".rstrip
     end
+      puts
   end
 
 end
