@@ -1,5 +1,11 @@
 class Month
   include Enumerable
+
+  MONTHS = ['January','February','March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  MONTH_LENGTHS = { 'January' => 31, 'February' => 28, 'March' => 31, 'April' => 30, 'May' => 31, 'June' => 30, 'July' => 31, 'August' => 31, 'September' => 30, 'October' => 31, 'November' => 30, 'December' => 31 }
+  SPACES_BEFORE = [6, 0, 1, 2, 3, 5, 5]
+  SPACES_AFTER  = [0, 6, 5, 4, 3, 2, 1]
+
   attr_accessor :month
   attr_reader :start
 
@@ -7,24 +13,21 @@ class Month
     @month = month
     @day = day.to_i
     @year = year.to_i
-    @months = ['January','February','March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    @month_lengths = { 'January' => 31, 'February' => 28, 'March' => 31, 'April' => 30, 'May' => 31, 'June' => 30, 'July' => 31, 'August' => 31, 'September' => 30, 'October' => 31, 'November' => 30, 'December' => 31 }
-    @spaces_before = [6, 0, 1, 2, 3, 5, 5]
-    @spaces_after =  [0, 6, 5, 4, 3, 2, 1]
-    @total_days = @month_lengths[@month]
-    @start = self.cal
-    @num_spaces_before = @spaces_before[@start - 1]
-    @num_spaces_after = @spaces_after[@start - 1]
+    @start = self.zeller
+    @total_days = MONTH_LENGTHS[@month]
+    @num_spaces_before = SPACES_BEFORE[@start]
     @month_array = self.build_month
     @month_int
   end
 
   def leap_year?
-    (@year % 4 == 0) and !(@year % 100 == 0) || (@year % 400 == 0)
+    # increment year back to actual year since we set it back for zellers
+    year = @year + 1
+    (year % 4 == 0) and !(year % 100 == 0) || (year % 400 == 0)
   end
 
   def prep_zeller_month
-    @idx = @months.each_index.select { |index| @months[index] == @month }
+    @idx = MONTHS.each_index.select { |index| MONTHS[index] == @month }
     if @idx[0] < 2
       @month_int = @idx[0] += 13
     else
@@ -33,25 +36,23 @@ class Month
   end
 
   def prep_zeller_year
-    if @month_int == 13 or @month_int == 14
-      @year -= 1
-    else
-      @year
-    end
+    @year -= 1 if @month_int == 13 or @month_int == 14
   end
 
-  def cal
-    self.prep_zeller_year
+  def zeller
     self.prep_zeller_month
+    self.prep_zeller_year
     puts
-    puts "YEAR #{@year}"
     h = (@day + ((@month_int +1) * 26) / 10) + @year + (@year / 4 ) + 6 * (@year / 100) + (@year/400)
     h = h % 7
     @start = h
   end
 
   def build_month
+    puts "#{@total_days}"
+    puts "#{self.leap_year?}"
     @total_days += 1 if self.leap_year? and @month == 'February' 
+    puts "#{@total_days}"
     month_array = []
     puts "#{month}".center(20)
     puts 'Su Mo Tu We Th Fr Sa'
@@ -69,7 +70,7 @@ class Month
     @month_array = month_array
   end
 
-  def display
+  def to_s
     @month_array = @month_array.each_slice(7) do |x|
       puts "#{x.join}"
     end
