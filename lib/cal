@@ -5,5 +5,5 @@ require_relative 'year'
 month = ARGV[0]
 year = ARGV[1]
 
-month = Month.new(month, 1, year)
+month = Month.new(month, year, 1)
 month.to_s
