@@ -10,7 +10,7 @@ class MonthTest < Test::Unit::TestCase
     #Wednesday
   end
 
-  def test_01_01_2014
+  def test_01_01_2014_to_string
     month = Month.new('January', 01, 2014)
     expected = `cal January 2014`
     actual = `ruby ./lib/cal January 2014`
@@ -21,6 +21,13 @@ class MonthTest < Test::Unit::TestCase
     month = Month.new('February', 28, 2014)
     assert_equal 6, month.start
     #Friday
+  end
+
+  def test_02_28_2014_to_string
+    month = Month.new('February', 01, 2014)
+    expected = `cal Februay 2014`
+    actual = `ruby ./lib/cal February 2014`
+    assert_equal expected, actual
   end
 
   def test_02_01_2014
@@ -35,13 +42,20 @@ class MonthTest < Test::Unit::TestCase
     #Saturday
   end
 
+  def test_03_01_2014_to_string
+    month = Month.new('March', 01, 2014)
+    expected = `cal March 2014`
+    actual = `ruby ./lib/cal March 2014`
+    assert_equal expected, actual
+  end
+
   def test_04_01_2014
     month = Month.new('April', 01, 2014)
     assert_equal 3, month.start
     #Tuesday 
   end
 
-  def test_02_29_2014
+  def test_02_29_2016
     month = Month.new('February', 29, 2016)
     assert_equal 2, month.start
     #Monday 

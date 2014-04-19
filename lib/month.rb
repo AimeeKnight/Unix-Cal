@@ -3,7 +3,7 @@ class Month
 
   MONTHS = ['January','February','March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   MONTH_LENGTHS = { 'January' => 31, 'February' => 28, 'March' => 31, 'April' => 30, 'May' => 31, 'June' => 30, 'July' => 31, 'August' => 31, 'September' => 30, 'October' => 31, 'November' => 30, 'December' => 31 }
-  SPACES_BEFORE = [6, 0, 1, 2, 3, 5, 5]
+  SPACES_BEFORE = [6, 0, 1, 2, 3, 4, 5]
   SPACES_AFTER  = [0, 6, 5, 4, 3, 2, 1]
 
   attr_accessor :month
@@ -76,7 +76,7 @@ class Month
     @month_array = @month_array.each_slice(7) do |x|
       puts "#{x.join}".rstrip
     end
-      puts
+    puts
   end
 
 end
