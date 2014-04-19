@@ -1,23 +1,6 @@
-# Year
-#   Stores an array of Month
-# YearFormatter
-#   Take an array of Months
-#   Go through each array
-#   Generate the string
-#   Return it
-# Month
-#   Array of arrays of days
-# MonthFormatter
-#   Take a Month
-#   Grab the array of arrays of days
-#   Generate a single string from that array
-#   Return it
-# ZellerCalculator
-#   Give it month and year and it returns the zeller month/year
+require_relative 'month'
 
-require_relative 'zeller_calculator'
-
-class Month
+class MonthFormatter
   include Enumerable
 
   MONTHS = ['January','February','March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -29,7 +12,7 @@ class Month
   attr_accessor :month
   attr_reader :start
 
-  def initialize (month, year, day = 1)
+  def initialize 
     @month = month
     @day = day.to_i
     @year = year.to_i
@@ -70,14 +53,11 @@ class Month
   end
 
   def to_s
-    body = print_header
-    body << "\n"
+    puts print_header
     month_array = self.build_month
     month_array.each_slice(7) do |x|
-      body << "#{x.join}".rstrip
-      body << "\n"
+      puts "#{x.join}".rstrip
     end
-    body
   end
 
 end
