@@ -5,7 +5,6 @@ class ZellerCalculator
                 :original_day
 
   def initialize(month, year, day = 1)
-    #self.original_month = month
     self.original_year = year
     self.original_day = day
     self.original_month = MONTHS.each_index.find { |index| MONTHS[index] == month }
