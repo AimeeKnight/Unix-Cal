@@ -37,6 +37,7 @@ class Year
     header << "#{MONTHS[i + 2]}".center(20)
     header << "\n"
     header << "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa"
+    header << "\n"
   end
 
   def quarter_months
@@ -54,10 +55,12 @@ class Year
     while j < 4
       week_string << "\n"
       week_string << print_header(k)
-      quartered_months[j].each_with_index do |month, index|
-        week_string << month.weeks[i].join
-        week_string << " "
-      end
+
+        quartered_months[j].each_with_index do |month, index|
+          week_string << month.weeks[i].join
+          week_string << " "
+        end
+
       week_string << "\n"
       quartered_months[j].each_with_index do |month, index|
         week_string << month.weeks[i+1].join

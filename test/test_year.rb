@@ -15,7 +15,7 @@ class YearTest < MiniTest::Unit::TestCase
   end
 
   def test_print_months
-    year_instance = Year.new(2014)
+    year_instance = Year.new(2012)
     year_instance.create_months
     year_instance.quarter_months
     year_instance.print_quarters
