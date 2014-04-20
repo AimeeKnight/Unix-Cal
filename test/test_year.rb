@@ -18,7 +18,7 @@ class YearTest < MiniTest::Unit::TestCase
     year_instance = Year.new(2012)
     year_instance.create_months
     year_instance.quarter_months
-    year_instance.print_quarters
+    year_instance.to_s
     assert_equal year_instance.months.length, 12
   end
 
