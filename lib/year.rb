@@ -38,6 +38,7 @@ class Year
     end
   end
 
+  ### SHAMEFUL!!!
   def print_quarters
     j = 0
     i = 0

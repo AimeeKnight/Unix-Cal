@@ -51,28 +51,24 @@ end
 class MonthTest < Test::Unit::TestCase
 
   def test_01_01_2014_to_string
-    #month = Month.new('January', 01, 2014)
     expected = `cal January 2014`
     actual = `ruby ./lib/cal January 2014`
     assert_equal expected, actual
   end
 
   def test_02_28_2014_to_string
-    #month = Month.new('February', 01, 2014)
     expected = `cal Februay 2014`
     actual = `ruby ./lib/cal February 2014`
     assert_equal expected, actual
   end
 
   def test_03_01_2014_to_string
-    #month = Month.new('March', 01, 2014)
     expected = `cal March 2014`
     actual = `ruby ./lib/cal March 2014`
     assert_equal expected, actual
   end
 
   def test_08_01_2014_to_string
-    #month = Month.new('August', 01, 2014)
     expected = `cal August 2014`
     actual = `ruby ./lib/cal August 2014`
     assert_equal expected, actual
