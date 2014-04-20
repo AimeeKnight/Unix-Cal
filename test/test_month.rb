@@ -7,7 +7,6 @@ class ZellerCalculatorTest < Test::Unit::TestCase
     month = Month.new('January', 2014, 01)
     #puts "#{month.weeks[0].join}"
     assert_equal true, true
-    #Wednesday
   end
 
   def test_01_01_2014
