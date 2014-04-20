@@ -66,7 +66,7 @@ class Year
       k += 3
     end
     week_string.prepend print_year_header
-    puts "#{week_string}"
+    "#{week_string}"
   end
 
 end
