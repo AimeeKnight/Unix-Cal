@@ -1,8 +1,8 @@
-require_relative 'zeller_calculator'
-
 class Year
-  attr_accessor :year, :months, :quartered_months
   MONTHS = ['January','February','March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  attr_accessor :year,
+                :months,
+                :quartered_months
 
   def initialize year
     self.year = year

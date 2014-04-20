@@ -35,4 +35,5 @@ class ZellerCalculator
       original_month + 1
     end
   end
+
 end

@@ -1,20 +1,3 @@
-# Year
-#   Stores an array of Month
-# YearFormatter
-#   Take an array of Months
-#   Go through each array
-#   Generate the string
-#   Return it
-# Month
-#   Array of arrays of days
-# MonthFormatter
-#   Take a Month
-#   Grab the array of arrays of days
-#   Generate a single string from that array
-#   Return it
-# ZellerCalculator
-#   Give it month and year and it returns the zeller month/year
-
 require_relative 'zeller_calculator'
 
 class Month
@@ -49,9 +32,10 @@ class Month
 
   def build_month
     month_array = []
+    total_days = @total_days
     @num_spaces_before.times { month_array << "   " }
-    @total_days += 1 if self.leap_year? and @month == 'February' 
-    @total_days.times do |i|
+    total_days +=1 if self.leap_year? and @month == 'February' 
+    total_days.times do |i|
       if i < 9
         month_array << " #{i + 1} "
       else
