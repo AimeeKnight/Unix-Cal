@@ -41,8 +41,11 @@ class Year
   def print_quarters
     j = 0
     i = 0
+    k = 0
     while j < 4
       week_string = ""
+      puts "      #{MONTHS[k]}               #{MONTHS[k+1]}               #{MONTHS[k+2]}        "
+      puts "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa"
       quartered_months[j].each_with_index do |month, index|
         week_string << month.weeks[i].join
         week_string << " "
@@ -74,6 +77,7 @@ class Year
       end
       puts "#{week_string}"
       j += 1
+      k += 3
     end
   end
 
