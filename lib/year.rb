@@ -27,6 +27,18 @@ class Year
     year_string = "#{year}".center(60)
   end
 
+  def print_header i
+    header = ""
+    header << "\n"
+    header << "#{MONTHS[i]}".center(20)
+    header << " "
+    header << "#{MONTHS[i + 1]}".center(20)
+    header << " "
+    header << "#{MONTHS[i + 2]}".center(20)
+    header << "\n"
+    header << "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa"
+  end
+
   def quarter_months
     months.each_slice(3) do |three_months|
       quartered_months << three_months
@@ -35,19 +47,13 @@ class Year
 
   ### SHAMEFUL!!!
   def print_quarters
-    j = 0
     i = 0
+    j = 0
     k = 0
     week_string = ""
     while j < 4
       week_string << "\n"
-      week_string << "#{MONTHS[k]}".center(20)
-      week_string << "  "
-      week_string << "#{MONTHS[k + 1]}".center(20)
-      week_string << "  "
-      week_string << "#{MONTHS[k + 2]}".center(20)
-      week_string << "\n"
-      week_string << "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa"
+      week_string << print_header(k)
       quartered_months[j].each_with_index do |month, index|
         week_string << month.weeks[i].join
         week_string << " "
@@ -80,10 +86,10 @@ class Year
       j += 1
       k += 3
     end
-      week_string.prepend "\n"
-      week_string.prepend print_year
-      week_string.prepend "\n"
-      puts "#{week_string}"
+    week_string.prepend "\n"
+    week_string.prepend print_year
+    week_string.prepend "\n"
+    puts "#{week_string}"
   end
 
 end
