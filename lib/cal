@@ -2,13 +2,13 @@
 require_relative 'month'
 require_relative 'year'
 
-#month = ARGV[0]
-year = ARGV[0]
-
-#month = Month.new(month, year)
-#print month.to_s
-
-year_instance = Year.new(year)
-year_instance.create_months
-year_instance.quarter_months
-print year_instance.to_s
+if ARGV.length == 2
+  month = ARGV[0]
+  year = ARGV[1]
+  month = Month.new(month, year)
+  print month.to_s
+else
+  year = ARGV[0]
+  year_instance = Year.new(year)
+  print year_instance.to_s
+end

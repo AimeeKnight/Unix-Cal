@@ -49,6 +49,8 @@ class Year
   end
 
   def to_s
+    self.create_months
+    self.quarter_months
     i, j, k = 0, 0, 0
     week_string = ""
     while j < 4
