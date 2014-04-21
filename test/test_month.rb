@@ -62,6 +62,12 @@ class MonthTest < Test::Unit::TestCase
     assert_equal expected, actual
   end
 
+  def test_02_01_2012_to_string
+    expected = `cal Februay 2012`
+    actual = `ruby ./lib/cal February 2012`
+    assert_equal expected, actual
+  end
+
   def test_03_01_2014_to_string
     expected = `cal March 2014`
     actual = `ruby ./lib/cal March 2014`

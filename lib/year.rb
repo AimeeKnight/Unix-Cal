@@ -45,14 +45,14 @@ class Year
     self.create_months
     self.quarter_months
     i, j, k = 0, 0, 0
-    week_string = ""
+    row = ""
     while j < 4
-      week_string << print_subhead(k)
+      row << print_subhead(k)
       while i < 6
-        week_string << "\n"
+        row << "\n"
         quartered_months[j].each_with_index do |month, index|
-          week_string << month.weeks[i].join
-          week_string << " "
+          row << month.weeks[i].join
+          row << " "
         end
         i += 1
       end
@@ -60,8 +60,8 @@ class Year
       j += 1
       k += 3
     end
-    week_string.prepend print_year_header
-    "#{week_string}"
+    row.prepend print_year_header
+    "#{row}"
   end
 
 end

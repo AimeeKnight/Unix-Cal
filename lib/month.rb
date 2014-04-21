@@ -74,6 +74,7 @@ class Month
       body << "#{x.join}".rstrip
       body << "\n"
     end
+    return body.chomp if self.leap_year?
     body
   end
 
