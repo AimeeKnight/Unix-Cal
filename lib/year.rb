@@ -19,7 +19,7 @@ class Year
 
   def print_year_header
     header = ""
-    header << "#{year}".center(60).rstrip
+    header << "#{year}".center(62).rstrip
     header << "\n"
   end
 
@@ -47,12 +47,17 @@ class Year
     i, j, k = 0, 0, 0
     row = ""
     while j < 4
+      row.rstrip
       row << print_subhead(k)
       while i < 6
         row << "\n"
         quartered_months[j].each_with_index do |month, index|
-          row << month.weeks[i].join
-          row << " "
+          row << "  " if index != 0 
+          if index == 2 && i == 5
+            row << month.weeks[i].join.rstrip
+          else
+            row << month.weeks[i].join.chop 
+          end
         end
         i += 1
       end
@@ -61,6 +66,7 @@ class Year
       k += 3
     end
     row.prepend print_year_header
+    row << "\n"
     "#{row}"
   end
 
