@@ -80,10 +80,10 @@ class MonthTest < Test::Unit::TestCase
     assert_equal expected, actual
   end
 
- #def test_invalid_entry
-  # asert_raises ArgumentError do
-     #Month.start(022012)
-   #end
- #end
+  def test_invalid_entry
+    assert_raises ArgumentError do
+      Month.new(2200)
+    end
+  end
 
 end

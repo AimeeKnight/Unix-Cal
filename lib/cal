@@ -3,12 +3,14 @@ require_relative 'month'
 require_relative 'year'
 
 if ARGV.length == 2
-  month = ARGV[0]
-  year = ARGV[1]
-  month = Month.new(month, year)
+  #params order: month string, year
+  month = Month.new(ARGV[0], ARGV[1])
   print month.to_s
-else
-  year = ARGV[0]
-  year_instance = Year.new(year)
+elsif ARGV.length == 1
+  #params order: year
+  year_instance = Year.new(ARGV[0])
   print year_instance.to_s
+else
+  month = Month.new('April', 2014)
+  print month.to_s
 end

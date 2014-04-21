@@ -16,6 +16,7 @@ class Month
   TOTAL_SPACE = 42
 
   def initialize (month, year, day = 1)
+    raise ArgumentError if year.to_i > 2200 || year.to_i < 1800
     self.month = month
     self.day = day.to_i
     self.year = year.to_i
