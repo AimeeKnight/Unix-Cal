@@ -25,8 +25,7 @@ class Year
 
   def print_year_header
     header = ""
-    header << "\n"
-    header << "#{year}".center(60)
+    header << "#{year}".center(60).rstrip
     header << "\n"
   end
 
@@ -34,10 +33,10 @@ class Year
     subhead = ""
     subhead << "\n"
     subhead << "#{MONTHS[i]}".center(20)
-    subhead << " "
+    subhead << "  "
     subhead << "#{MONTHS[i + 1]}".center(20)
-    subhead << " "
-    subhead << "#{MONTHS[i + 2]}".center(20)
+    subhead << "  "
+    subhead << "#{MONTHS[i + 2]}".center(20).rstrip
     subhead << "\n"
     subhead << "Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa  Su Mo Tu We Th Fr Sa"
   end
