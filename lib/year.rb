@@ -17,12 +17,6 @@ class Year
     end
   end
 
-  def print_months
-    self.months.each do |month|
-      puts month.to_s
-    end
-  end
-
   def print_year_header
     header = ""
     header << "#{year}".center(60).rstrip
