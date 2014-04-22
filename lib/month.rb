@@ -18,7 +18,8 @@ class Month
 
   def initialize (month, year, day = 1)
     fail "cal: year 0 not in range 1..9999" if year.to_i > 3000 || year.to_i < 1800
-    #fail "cal: year 0 not in range 1..9999" !MONTH_LENGTHS.has_key? month
+    fail "cal: year 0 not in range 1..9999" if !MONTH_LENGTHS.has_key? month and month.to_i.to_s != month
+    fail "cal: year 0 not in range 1..9999" if month.to_i.to_s == month and month.to_i > 12
     self.month = month
     self.day = day.to_i
     self.year = year.to_i
