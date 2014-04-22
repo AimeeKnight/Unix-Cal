@@ -33,5 +33,29 @@ class YearTest < Test::Unit::TestCase
     actual = `ruby ./lib/cal 2014`
     assert_equal expected, actual
   end
+
+  def test_2015_to_string
+    expected = `cal 2015`
+    actual = `ruby ./lib/cal 2015`
+    assert_equal expected, actual
+  end
+
+  def test_2000_to_string
+    expected = `cal 2000`
+    actual = `ruby ./lib/cal 2000`
+    assert_equal expected, actual
+  end
+
+  def test_2100_to_string
+    expected = `cal 2100`
+    actual = `ruby ./lib/cal 2100`
+    assert_equal expected, actual
+  end
+
+  def test_1800_to_string
+    expected = `cal 1800`
+    actual = `ruby ./lib/cal 1800`
+    assert_equal expected, actual
+  end
 end
 
