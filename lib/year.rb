@@ -50,9 +50,10 @@ class Year
     self.quarter_months
     i, j, k = 0, 0, 0
     row = ""
+    # j represents a set of three months (four total)
     while j < 4
-      row.rstrip
       row << print_subhead(k)
+      # i represents a row of weeks (six total)
       while i < 6
         row << "\n"
         quartered_months[j].each_with_index do |month, index|
@@ -67,6 +68,7 @@ class Year
         end
         i += 1
       end
+      # reset i to zero since we need to start the next set of months and print the first week
       i = 0
       j += 1
       k += 3

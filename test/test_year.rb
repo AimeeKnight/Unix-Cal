@@ -57,5 +57,16 @@ class YearTest < MiniTest::Unit::TestCase
     actual = `ruby ./lib/cal 1800`
     assert_equal expected, actual
   end
+ 
+  def test_loop
+    i = 1800
+    while i < 3000
+      expected = `cal "#{i}"`
+      actual = `ruby ./lib/cal "#{i}"`
+      assert_equal expected, actual
+    i += 1
+    end
+  end
+
 end
 
