@@ -11,13 +11,14 @@ class Month
                 :num_spaces_before,
                 :weeks
 
+  MONTHS = ['January','February','March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   MONTH_LENGTHS = { 'January' => 31, 'February' => 28, 'March' => 31, 'April' => 30, 'May' => 31, 'June' => 30, 'July' => 31, 'August' => 31, 'September' => 30, 'October' => 31, 'November' => 30, 'December' => 31 }
   SPACES_BEFORE = [6, 0, 1, 2, 3, 4, 5]
   TOTAL_SPACE = 42
 
   def initialize (month, year, day = 1)
     fail "cal: year 0 not in range 1..9999" if year.to_i > 3000 || year.to_i < 1800
-    fail "cal: year 0 not in range 1..9999" if !MONTH_LENGTHS.has_key? month
+    #fail "cal: year 0 not in range 1..9999" !MONTH_LENGTHS.has_key? month
     self.month = month
     self.day = day.to_i
     self.year = year.to_i
@@ -25,6 +26,16 @@ class Month
     self.total_days = MONTH_LENGTHS[self.month]
     self.num_spaces_before = SPACES_BEFORE[self.start]
     self.weeks = self.build_weeks
+  end
+
+  def month=(month)
+    if month.to_i.to_s == month
+      if month.to_i <= 12 && month.to_i >= 0
+        @month = MONTHS[month.to_i - 1]
+      end
+    else
+      @month = month
+    end
   end
 
   def leap_year?

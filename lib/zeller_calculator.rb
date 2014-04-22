@@ -7,15 +7,7 @@ class ZellerCalculator
   def initialize(month, year, day = 1)
     self.original_year = year
     self.original_day = day
-    self.original_month = month
-  end
-
-  def original_month=(month)
-    if month.class == String
-      @original_month = MONTHS.each_index.find { |index| MONTHS[index] == month }
-    else
-      @original_month - 1
-    end
+    self.original_month = MONTHS.each_index.find { |index| MONTHS[index] == month }
   end
 
   def calculate
