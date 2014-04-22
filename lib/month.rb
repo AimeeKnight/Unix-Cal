@@ -16,7 +16,8 @@ class Month
   TOTAL_SPACE = 42
 
   def initialize (month, year, day = 1)
-    raise ArgumentError if year.to_i > 2200 || year.to_i < 1800
+    fail "cal: year 0 not in range 1..9999" if year.to_i > 3000 || year.to_i < 1800
+    fail "cal: year 0 not in range 1..9999" if !MONTH_LENGTHS.has_key? month
     self.month = month
     self.day = day.to_i
     self.year = year.to_i

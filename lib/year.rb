@@ -41,14 +41,9 @@ class Year
     end
   end
 
- # def remove_blanks
- #   self.create_months
- #   months.each do |month|
- #     month.weeks.each_with_index do |week, index|
- #       
- #     end
- #   end
- # end
+  def long_month? index
+
+  end
 
   def to_s
     self.create_months

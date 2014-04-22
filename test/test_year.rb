@@ -1,8 +1,8 @@
 require 'test/unit'
 require 'year'
 
-#class YearTest < MiniTest::Unit::TestCase
-class YearTest < Test::Unit::TestCase
+class YearTest < MiniTest::Unit::TestCase
+#class YearTest < Test::Unit::TestCase
   
   def test_instaniate_year 
     year_instance = Year.new(2014)
