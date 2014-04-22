@@ -22,11 +22,16 @@ class YearTest < Test::Unit::TestCase
    assert_equal year_instance.quartered_months.length, 4
  end
 
-  def test_2014_to_string
+  def test_2012_to_string
     expected = `cal 2012`
     actual = `ruby ./lib/cal 2012`
     assert_equal expected, actual
-    #assert_equal true, true
+  end
+
+  def test_2014_to_string
+    expected = `cal 2014`
+    actual = `ruby ./lib/cal 2014`
+    assert_equal expected, actual
   end
 end
 

@@ -41,6 +41,15 @@ class Year
     end
   end
 
+ # def remove_blanks
+ #   self.create_months
+ #   months.each do |month|
+ #     month.weeks.each_with_index do |week, index|
+ #       
+ #     end
+ #   end
+ # end
+
   def to_s
     self.create_months
     self.quarter_months
@@ -53,7 +62,9 @@ class Year
         row << "\n"
         quartered_months[j].each_with_index do |month, index|
           row << "  " if index != 0 
-          if index == 2 && i == 5
+          if index == 2 && i == 4 && month.weeks[5].first == "   "
+            row << month.weeks[i].join.rstrip
+          elsif index == 2 and i == 5
             row << month.weeks[i].join.rstrip
           else
             row << month.weeks[i].join.chop 
