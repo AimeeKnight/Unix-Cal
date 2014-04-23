@@ -11,7 +11,8 @@ elsif ARGV.length == 1
   year_instance = Year.new(ARGV[0])
   print year_instance.to_s
 else
-  month = Month.new('April', 2014)
+  current_month = Time.now.strftime("%B")
+  current_year = Time.now.strftime("%Y")
+  month = Month.new(current_month, current_year)
   print month.to_s
 end
-#time.now.strftime

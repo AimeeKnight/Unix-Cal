@@ -44,10 +44,10 @@ class Year
   def to_s
     self.create_months
     self.quarter_months
-    k = 0
+    i = 0
     row = ""
     4.times do |group_of_three_months|
-      row << print_subhead(k)
+      row << print_subhead(i)
       6.times do |week_row|
         row << "\n"
         quartered_months[group_of_three_months].each_with_index do |month, index|
@@ -65,7 +65,7 @@ class Year
       # reset week_row to zero since we need to move to the next group of three months and print the first week
       week_row = 0
       group_of_three_months += 1
-      k += 3
+      i += 3
     end
     row.prepend print_year_header
     row << "\n"
