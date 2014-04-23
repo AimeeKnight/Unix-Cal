@@ -14,3 +14,4 @@ else
   month = Month.new('April', 2014)
   print month.to_s
 end
+#time.now.strftime

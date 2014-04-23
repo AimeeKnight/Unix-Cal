@@ -41,36 +41,30 @@ class Year
     end
   end
 
-  def long_month? index
-
-  end
-
   def to_s
     self.create_months
     self.quarter_months
-    i, j, k = 0, 0, 0
+    k = 0
     row = ""
-    # j represents a set of three months (four total)
-    while j < 4
+    4.times do |group_of_three_months|
       row << print_subhead(k)
-      # i represents a row of weeks (six total)
-      while i < 6
+      6.times do |week_row|
         row << "\n"
-        quartered_months[j].each_with_index do |month, index|
+        quartered_months[group_of_three_months].each_with_index do |month, index|
           row << "  " if index != 0 
-          if index == 2 && i == 4 && month.weeks[5].first == "   "
-            row << month.weeks[i].join.rstrip
-          elsif index == 2 and i == 5
-            row << month.weeks[i].join.rstrip
+          if index == 2 && week_row == 4 && month.weeks[5].first == "   "
+            row << month.weeks[week_row].join.rstrip
+          elsif index == 2 and week_row == 5
+            row << month.weeks[week_row].join.rstrip
           else
-            row << month.weeks[i].join.chop 
+            row << month.weeks[week_row].join.chop 
           end
         end
-        i += 1
+        week_row += 1
       end
-      # reset i to zero since we need to start the next set of months and print the first week
-      i = 0
-      j += 1
+      # reset week_row to zero since we need to move to the next group of three months and print the first week
+      week_row = 0
+      group_of_three_months += 1
       k += 3
     end
     row.prepend print_year_header
