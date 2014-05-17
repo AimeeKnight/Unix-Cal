@@ -1,12 +1,13 @@
 class ZellerCalculator
   MONTHS = ['January','February','March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
   attr_accessor :original_month,
                 :original_year,
                 :original_day
 
   def initialize(month, year, day = 1)
-    self.original_year = year
-    self.original_day = day
+    self.original_year  = year
+    self.original_day   = day
     self.original_month = MONTHS.each_index.find { |index| MONTHS[index] == month }
   end
 

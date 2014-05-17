@@ -1,18 +1,23 @@
 #!/usr/bin/env ruby
 require_relative 'month'
 require_relative 'year'
+require_relative 'formatters/month_formatter'
+require_relative 'formatters/year_formatter'
 
 if ARGV.length == 2
   #params order: month string, year
   month = Month.new(ARGV[0], ARGV[1])
-  print month.to_s
+
+  puts Formatters::MonthFormatter.new(month).to_s
 elsif ARGV.length == 1
   #params order: year
-  year_instance = Year.new(ARGV[0])
-  print year_instance.to_s
+  year = Year.new(ARGV[0])
+
+  puts Formatters::YearFormatter.new(year).to_s
 else
   current_month = Time.now.strftime("%B")
-  current_year = Time.now.strftime("%Y")
-  month = Month.new(current_month, current_year)
-  print month.to_s
+  current_year  = Time.now.strftime("%Y")
+  month         = Month.new(current_month, current_year)
+
+  puts Formatters::MonthFormatter.new(month).to_s
 end
