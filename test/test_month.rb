@@ -4,7 +4,7 @@ require 'test/unit'
 class ZellerCalculatorTest < Test::Unit::TestCase
 
   def test_weeks
-    month = Month.new('January', 2014, 01)
+    month = Month.new('January', 2014)
     assert_equal true, true
   end
 
